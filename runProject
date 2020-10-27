@@ -1,0 +1,12 @@
+#!/bin/bash
+
+intexit() {
+	kill -HUP -$$
+}
+
+trap intexit SIGINT
+
+nohup python3 Subscriber.py &
+nohup python3 api.py &
+
+wait
